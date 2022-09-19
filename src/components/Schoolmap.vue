@@ -79,7 +79,7 @@
 <style scoped> 
 
     svg{
-        height: 22em;
+        height: 32em;
     }
 	.st0{
         fill:#D9D9D9;
