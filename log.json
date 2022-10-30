@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "room": {
+      "name": "Cafeteria",
+      "status": "Seguro",
+    }
+  },
+  
+  {
+    "id": 2,
+    "room": {
+      "name": "Salon 1",
+      "status": "Seguro",
+    }
+  },
+  {
+    "id": 2,
+    "room": {
+      "name": "Salon 1",
+      "status": "Seguro",
+    }
+  },
+]
