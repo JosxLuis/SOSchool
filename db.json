@@ -1,10 +1,17 @@
-[
-  {
-    "id": 1,
-    "name": "Leanne Graham",
-    "room": {
-      "name": "Cafeteria",
-      "status": "Seguro"
-    }
-  }
+[{
+		"userId": 1,
+		"id": 1,
+		"room": {
+			"name": "Cafeteria",
+			"status": "Seguro"
+		}
+	},
+	{
+		"userId": 1,
+		"id": 1,
+		"room": {
+			"name": "Cafeteria",
+			"status": "Seguro"
+		}
+	}
 ]
