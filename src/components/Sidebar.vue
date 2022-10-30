@@ -16,8 +16,22 @@
 </template>
 
 <script>
-     export default{
+
+    import axios from 'axios'
+    export default{
         name: 'Sidebar',
+
+        mounted(){
+            console.log("Me he montado")
+            this.getLog();
+        },
+        methods:{
+            getLog(){
+                console.log("hola")
+            }
+        }
+
+
     }
 </script>
 
