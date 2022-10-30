@@ -1,24 +1,11 @@
-[
-	
-	{
-		"id": 1,
-		"room": {
-			"name": "Cafeteria",
-			"status": "Seguro"
-		}
-	},
-	{
-		"id": 2,
-		"room": {
-			"name": "Salon 1",
-			"status": "Seguro"
-		}
-	},
-	{
-		"id": 2,
-		"room": {
-			"name": "Salon 1",
-			"status": "Seguro"
-		}
-	}
-]
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "hello"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
