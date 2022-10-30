@@ -1,17 +1,34 @@
-[{
-		"userId": 1,
-		"id": 1,
-		"room": {
-			"name": "Cafeteria",
-			"status": "Seguro"
-		}
-	},
-	{
-		"userId": 1,
-		"id": 1,
-		"room": {
-			"name": "Cafeteria",
-			"status": "Seguro"
-		}
-	}
-]
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "Cafeteria",
+      "status": "Seguro"
+    },
+    {
+      "id": 2,
+      "name": "Salon 2",
+      "status": "Inseguro"
+    },
+    {
+      "id": 3,
+      "title": "Salon 15",
+      "status": "Probablemente Inseeguro"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "comment 1",
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "body": "comment 2",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "Profile 1"
+  }
+}
