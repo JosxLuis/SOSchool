@@ -1,34 +1,133 @@
 {
-  "posts": [
+  "logs": [
     {
       "id": 1,
-      "name": "Cafeteria",
-      "status": "Seguro"
+      "roomId": 1,
+      "statusId": 1
     },
     {
       "id": 2,
-      "name": "Salon 2",
-      "status": "Inseguro"
+      "roomId": 2,
+      "statusId": 3
     },
     {
       "id": 3,
-      "name": "Salon 15",
-      "status": "Probablemente Inseguro"
+      "roomId": 3,
+      "statusId": 2
+    },
+    {
+      "id": 4,
+      "roomId": 1,
+      "statusId": 2
+    },
+    {
+      "id": 5,
+      "roomId": 1,
+      "statusId": 1
+    },
+    {
+      "id": 6,
+      "roomId": 1,
+      "statusId": 2
+    },
+    {
+      "id": 7,
+      "roomId": 1,
+      "statusId": 1
+    },
+    {
+      "id": 8,
+      "roomId": 1,
+      "statusId": 1
+    },
+    {
+      "id": 9,
+      "roomId": 1,
+      "statusId": 2
+    },
+    {
+      "id": 10,
+      "roomId": 4,
+      "statusId": 1
+    },
+    {
+      "id": 11,
+      "roomId": 4,
+      "statusId": 2
+    },
+    {
+      "id": 12,
+      "roomId": 1,
+      "statusId": 1,
+      "date": 1668202257515
     }
   ],
-  "comments": [
+  "rooms": [
     {
       "id": 1,
-      "body": "comment 1",
-      "postId": 1
+      "name": "Cafeteria"
     },
     {
       "id": 2,
-      "body": "comment 2",
-      "postId": 1
+      "name": "Salón 1"
+    },
+    {
+      "id": 3,
+      "name": "Salón 2"
+    },
+    {
+      "id": 4,
+      "name": "Salón 3"
+    },
+    {
+      "id": 5,
+      "name": "Biblioteca"
+    },
+    {
+      "id": 6,
+      "name": "Salón de artes"
+    },
+    {
+      "id": 7,
+      "name": "Baño mujeres"
+    },
+    {
+      "id": 8,
+      "name": "Salón 4"
+    },
+    {
+      "id": 9,
+      "name": "Salón 5"
+    },
+    {
+      "id": 10,
+      "name": "Salón 6"
+    },
+    {
+      "id": 11,
+      "name": "Dirección"
+    },
+    {
+      "id": 12,
+      "name": "Gym"
+    },
+    {
+      "id": 13,
+      "name": "Baño hombres"
     }
   ],
-  "profile": {
-    "name": "Profile 1"
-  }
+  "status": [
+    {
+      "id": 1,
+      "name": "Seguro"
+    },
+    {
+      "id": 2,
+      "name": "Inseguro"
+    },
+    {
+      "id": 3,
+      "name": "Probablemente Inseguro"
+    }
+  ]
 }

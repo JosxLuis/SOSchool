@@ -1,42 +1,86 @@
-
 <template>
     <div class="sidebar">
-        <h2>Salón</h2>
+        <h2>Salones</h2>
         <ul>
-            <li>Log 1</li>
-            <li>Log 2</li>
-            <li>Log 3</li>
-            <li>Log 4</li>
-            <li>Log 5</li>
-            <li>Log 6</li>
-            <li>Log 7</li>
-            <li>Log 8</li>
+            
+            <li v-for="room in rooms" :key="room.id">
+                <!-- <router-link :to="`/classroom/${room.id}`"> {{ room.name }} </router-link> -->
+                
+                <router-link :to="{name: 'Classroom', params: {id: room.id}}"> {{ room.name }} </router-link>
+                 :  
+                <!-- <span :class="log.status == 'Seguro' ? 'safe' : log.status == 'Inseguro' ? 'unsafe' : 'punsafe'">
+                    {{log.status}}
+                </span> -->
+                Status
+            </li>
         </ul>
     </div>
 </template>
 
 <script>
-
-    import axios from 'axios'
-    export default{
+    export default {
         name: 'Sidebar',
-
-        mounted(){
-            console.log("Me he montado")
-            this.getLog();
+        created(){
         },
-        methods:{
-            getLog(){
-                console.log("hola")
+        beforeUpdate(){ 
+            //this.logs = this.matchData()
+            console.log("Before Update")
+        },
+        updated(){
+            console.log("Updated")
+            this.statusChecker()
+        },
+
+        methods: {
+            matchData(){
+                let registros = []
+                this.logs.map((log) => {
+                    var object = {
+                        id: "",
+                        room: "",
+                        status: ""
+                    }
+                    object.id = log.id
+                    this.rooms.map((room) => {
+                        if(room.id === log.roomId){
+                            console.log(room.name)
+                            object.room = room.name 
+                        }
+                    });
+                    this.status.map((status) => {
+                        if(status.id === log.statusId){
+                            object.status = status.name
+                        }
+                    });
+                    registros.push(object)
+                });
+                return registros
             }
         }
-
-
     }
 </script>
 
+<style scoped>
+    h2{
+        font-weight: bold;
+    }
+    a{
+        font-weight: bold;
+        color:#000000;
+        text-decoration: none; 
+    }
 
-
-<style>
-
+    a:hover{
+        color: green;;
+    }
+    
+    .safe{
+        color: green;
+    }
+    .unsafe{
+        color: red;
+    }
+    .punsafe{
+        color: orange;
+    }
 </style>

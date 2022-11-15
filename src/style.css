@@ -54,6 +54,12 @@ html, body{
   font-size: 2em;
 }
 
+.retroceso{
+  margin: 0 0.5rem;
+  color:green;
+  text-decoration:underline;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
