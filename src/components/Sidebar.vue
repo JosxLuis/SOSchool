@@ -7,11 +7,10 @@
                 <!-- <router-link :to="`/classroom/${room.id}`"> {{ room.name }} </router-link> -->
                 
                 <router-link :to="{name: 'Classroom', params: {id: room.id}}"> {{ room.name }} </router-link>
-                 :  
-                <!-- <span :class="log.status == 'Seguro' ? 'safe' : log.status == 'Inseguro' ? 'unsafe' : 'punsafe'">
-                    {{log.status}}
-                </span> -->
-                Status
+                 : 
+                <span :class="room.status == 'Seguro' ? 'safe' : room.status == 'Inseguro' ? 'unsafe' : room.status == 'Indefinido' ? 'undefined' : 'punsafe'">
+                    {{room.status}}
+                </span>
             </li>
         </ul>
     </div>
@@ -73,6 +72,10 @@
     a:hover{
         color: green;;
     }
+
+    span{
+        font-weight: 500;
+    }
     
     .safe{
         color: green;
@@ -82,5 +85,9 @@
     }
     .punsafe{
         color: orange;
+    }
+
+    .undefined{
+        color: grey;
     }
 </style>

@@ -7,7 +7,11 @@
 
         <h2>{{room}}</h2>
         <ul>
-            <li>Estado: estado </li>
+            <li>Estado general:
+                <span :class="status == 'Seguro' ? 'safe' : status == 'Inseguro' ? 'unsafe' : 'punsafe'">
+                    {{status}}
+                </span>
+            </li>
             <li>Registro de usuarios: </li>
             <ul>
                 <li v-for="log in logs" :key="log.id">
@@ -15,8 +19,8 @@
                     <span :class="log.status == 'Seguro' ? 'safe' : log.status == 'Inseguro' ? 'unsafe' : 'punsafe'">
                         {{log.status}}
                     </span>
-
-                    hace 2s
+                    hace 
+                    {{this.dateNow()-log.date}} min
                 </li>
             </ul>
         </ul>
@@ -29,6 +33,7 @@
         data(){
             return{
                 room:'',
+                status:'',
                 id : Number,
             }
         },
@@ -41,6 +46,7 @@
             this.rooms.map((room) => {
                 if(room.id === this.id){
                     this.room = room.name 
+                    this.status = room.status
                 }
             });  
         },       
@@ -50,17 +56,32 @@
             },
         },
         methods: {
+            getFullMinutes(){
+                var today = new Date();
+                if (today.getMinutes() < 10) {
+                    return '0' + today.getMinutes();
+                }
+                return today.getMinutes();
+            },
+            dateNow(){
+                var today = new Date();
+                //+ ":" + today.getSeconds();
+                var time = today.getHours() + "" + this.getFullMinutes() 
+                return time
+            },
             matchData(){
                 let registros = []
                 this.logs.map((log) => {
                     var object = {
                         id: "",
                         room: "",
-                        status: ""
+                        status: "",
+                        date: ""
                     }
 
                     if(log.roomId === this.id){
                         object.id = log.id
+                        object.date = log.date
                         this.rooms.map((room) => {
                             if(room.id === log.roomId){
                                 object.room = room.name 
@@ -106,6 +127,10 @@
         
     }
 
+    span{
+        font-weight: 500 !important;
+    }
+
     a:hover{
         color: green;;
     }
@@ -113,6 +138,10 @@
     .back:hover{
         background: #cccccc;
         transition: 0.3s;
+    }
+
+    ul li{
+        font-weight: 400;
     }
 
     p{

@@ -26,9 +26,11 @@ const GlobalVariables = {
     mounted(){
     },
     beforeUpdate(){ 
+        this.statusChecker()
 
     },
     updated(){
+        
         //this.getData()
     },
 
@@ -44,29 +46,79 @@ const GlobalVariables = {
                     })
                     .catch( e => console.log(e))  
         },
+        put(room, status){
+            axios.put('http://localhost:3000/rooms/' + room.id,
+                {
+                    id: room.id,
+                    name: room.name,
+                    status:  status
+                }  
+            )
+            .then( response => {
+                console.log("response", response)
+            })
+            .catch( e => console.log(e)) 
+        },
+        getFullMinutes(){
+            var today = new Date();
+            if (today.getMinutes() < 10) {
+                return '0' + today.getMinutes();
+            }
+            return today.getMinutes();
+        },
+        dateNow(){
+            var today = new Date();
+            //+ ":" + today.getSeconds();
+            var time = today.getHours() + "" + this.getFullMinutes() 
+            return time
+        },
         statusChecker(){
+            var today = this.dateNow()
 
-            
-            this.rooms.map((room) => {     
-                let safe, unsafe, so;      
+            this.rooms.map((room) => {      
+                let safe = 0
+                let unsafe = 0
+                var timeRecect = 0
+                
                 this.logs.map ( (logs) => {
-                    console.log("log: ",logs)
                     if (logs.roomId === room.id){
-                        switch(logs.statusId){
-                            case 1:
-                                safe ++;
-                            case 2:
-                                unsafe --;
-                            case 3:
-                                so++;
+
+                        if(timeRecect<logs.date){
+                            timeRecect = logs.date
                         }
-                        console.log("filter: ",logs.roomId)
+
+                        console.log("time", timeRecect)
+                        if(logs.statusId == 1){
+                            safe = safe+1;
+                        }
+                        if(logs.statusId == 2){
+                            unsafe = unsafe+1;
+                        }
+
+                        if(safe == 0 && unsafe == 0){
+                            
+                        }else{
+                            if(safe >= 10 && unsafe == 0){
+                                console.log("Soy safe")
+                                this.put(room, "Seguro")
+                            }
+
+                            if(unsafe >= 1){
+                                this.put(room, "Inseguro")
+                            }
+                        }
+
+                        console.log("todat", today)
+                        console.log("timerect", timeRecect)
+                        console.log("operacion", today-timeRecect)
+
+                        if((today-timeRecect) >= 2){
+                            this.put(room, "Problamente Inseguro")
+                        }
                     }
                 });
-
+                console.log("SAFE", safe)
             });
-
-
         }
     }
 }

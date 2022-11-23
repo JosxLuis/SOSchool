@@ -31,16 +31,23 @@
             "message"
         ],
         methods:{
+            getFullMinutes(){
+                var today = new Date();
+                if (today.getMinutes() < 10) {
+                    return '0' + today.getMinutes();
+                }
+                return today.getMinutes();
+            },
             dateNow(){
-                const currentDate = new Date();
-                const timestamp = currentDate.getTime();
-                return timestamp
+                var today = new Date();
+                //+ ":" + today.getSeconds();
+                var time = today.getHours() + "" + this.getFullMinutes() 
+                return time
             },
             createPost(roomId, statusId){
-                
-                this.formData.date = this.dateNow()
                 this.formData.roomId = roomId
                 this.formData.statusId = statusId
+                this.formData.date = this.dateNow()
                 axios.post('http://localhost:3000/logs', this.formData)
                     .then( response => {
                         console.log("response", response)
