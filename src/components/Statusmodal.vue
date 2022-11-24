@@ -2,7 +2,7 @@
     <div>
         <!-- <b-button v-b-modal.modal-1>Modal</b-button> -->
         <b-modal id="modal-1" title="Selección de estado" hide-footer>
-            <p class="my-4">Estado de {{ message }}:</p>
+            <p class="my-4">Estado de {{ this.name }}:</p>
 
             <div class="buttons"> 
                 <b-button class="mt-3" variant="success" block @click="createPost(message, 1);">Seguro</b-button>
@@ -19,6 +19,7 @@
         name: 'Statusmodal',
         data(){
             return {
+                name: '',
                 formData: {
                     id: '',
                     roomId: '',
@@ -30,20 +31,10 @@
         props: [
             "message"
         ],
+        updated(){
+            this.nameRoom()
+        },
         methods:{
-            getFullMinutes(){
-                var today = new Date();
-                if (today.getMinutes() < 10) {
-                    return '0' + today.getMinutes();
-                }
-                return today.getMinutes();
-            },
-            dateNow(){
-                var today = new Date();
-                //+ ":" + today.getSeconds();
-                var time = today.getHours() + "" + this.getFullMinutes() 
-                return time
-            },
             createPost(roomId, statusId){
                 this.formData.roomId = roomId
                 this.formData.statusId = statusId
@@ -57,6 +48,14 @@
             hideModal() {
                 this.$bvModal.hide(1)
             },
+            nameRoom(){
+                this.rooms.map((room) => {
+                    if(room.id == this.message){
+                        this.name = room.name
+                    }
+                });
+
+            }
             
         },
         

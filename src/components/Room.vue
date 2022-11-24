@@ -56,19 +56,6 @@
             },
         },
         methods: {
-            getFullMinutes(){
-                var today = new Date();
-                if (today.getMinutes() < 10) {
-                    return '0' + today.getMinutes();
-                }
-                return today.getMinutes();
-            },
-            dateNow(){
-                var today = new Date();
-                //+ ":" + today.getSeconds();
-                var time = today.getHours() + "" + this.getFullMinutes() 
-                return time
-            },
             matchData(){
                 let registros = []
                 this.logs.map((log) => {

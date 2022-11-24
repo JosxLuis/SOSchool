@@ -26,11 +26,9 @@ const GlobalVariables = {
     mounted(){
     },
     beforeUpdate(){ 
-        this.statusChecker()
-
+        this.changeColor()
     },
     updated(){
-        
         //this.getData()
     },
 
@@ -75,49 +73,60 @@ const GlobalVariables = {
         statusChecker(){
             var today = this.dateNow()
 
-            this.rooms.map((room) => {      
+            this.rooms.map((room) => { 
                 let safe = 0
                 let unsafe = 0
                 var timeRecect = 0
                 
-                this.logs.map ( (logs) => {
-                    if (logs.roomId === room.id){
+                this.logs.map ( (logs) => { 
+                    if (logs.roomId === room.id){ 
 
-                        if(timeRecect<logs.date){
+                        if(timeRecect<logs.date){ 
                             timeRecect = logs.date
                         }
 
-                        console.log("time", timeRecect)
                         if(logs.statusId == 1){
                             safe = safe+1;
                         }
                         if(logs.statusId == 2){
                             unsafe = unsafe+1;
                         }
-
-                        if(safe == 0 && unsafe == 0){
-                            
-                        }else{
-                            if(safe >= 10 && unsafe == 0){
-                                console.log("Soy safe")
-                                this.put(room, "Seguro")
-                            }
-
-                            if(unsafe >= 1){
-                                this.put(room, "Inseguro")
-                            }
-                        }
-
-                        console.log("todat", today)
-                        console.log("timerect", timeRecect)
-                        console.log("operacion", today-timeRecect)
-
-                        if((today-timeRecect) >= 2){
-                            this.put(room, "Problamente Inseguro")
-                        }
                     }
                 });
-                console.log("SAFE", safe)
+
+                if (safe == 0 && unsafe == 0){
+                    this.put(room, "Indefinido")
+                }else{
+                    let diferenia = today-timeRecect
+                    if(safe >= 5 && unsafe == 0 && diferenia < 2){
+                        this.put(room, "Seguro")
+                    }else if (unsafe >= 1 && diferenia < 2){
+                        this.put(room, "Inseguro")
+                    }else{ 
+                        this.put(room, "Problamente Inseguro")
+                    }
+                }
+            });
+        },
+        changeColor(){
+            console.log("hola")
+            
+            this.rooms.map((room) => {
+                let cuarto = "s" + room.id
+                switch(room.status){
+                    case "Inseguro":
+                        document.getElementById(cuarto).setAttribute("fill", "red")
+                        break
+                    case "Seguro":
+                        document.getElementById(cuarto).setAttribute("fill", "green")
+                        break
+                    case "Problamente Inseguro":
+                        document.getElementById(cuarto).setAttribute("fill", "orange")
+                        break
+                    case "Indefinido":
+                        document.getElementById(cuarto).setAttribute("fill", "#D9D9D9")
+                        break
+                }
             });
         }
     }
