@@ -4,43 +4,43 @@
         viewBox="0 0 1165 986" style="enable-background:new 0 0 1165 986;" xml:space="preserve">
 
             <g id="Salon_12">
-                <rect x="840.5" y="712.5" class="st0" width="141" height="180" v-b-modal.modal-1 @click="onClick(13)"/>
+                <rect x="840.5" y="712.5" id="s13" class="st0" width="141" height="180" v-b-modal.modal-1 @click="onClick(13)"/>
             </g>
             <g id="Salon_11">
-                <rect x="564.5" y="33.5" class="st0" width="286" height="180" v-b-modal.modal-1 @click="onClick(12)"/>
+                <rect x="564.5" y="33.5" id="s12" class="st0" width="286" height="180" v-b-modal.modal-1 @click="onClick(12)"/>
             </g>
             <g id="Salon_10">
-                <rect x="201.5" y="33.5" class="st0" width="286" height="180" v-b-modal.modal-1 @click="onClick(11)"/>
+                <rect x="201.5" y="33.5" id="s11" class="st0" width="286" height="180" v-b-modal.modal-1 @click="onClick(11)"/>
             </g>
             <g id="Salon_9">
-                <rect x="928.5" y="41.5" class="st0" width="174" height="200" v-b-modal.modal-1 @click="onClick(10)"/>
+                <rect x="928.5" y="41.5" id="s10" class="st0" width="174" height="200" v-b-modal.modal-1 @click="onClick(10)"/>
             </g>
             <g id="Salon_8">
-                <rect x="928.5" y="252.5" class="st0" width="174" height="200" v-b-modal.modal-1 @click="onClick(9)"/>
+                <rect x="928.5" y="252.5" id="s9" class="st0" width="174" height="200" v-b-modal.modal-1 @click="onClick(9)"/>
             </g>
             <g id="Salon_7">
-                <rect x="928.5" y="463.5" class="st0" width="174" height="188" v-b-modal.modal-1 @click="onClick(8)"/>
+                <rect x="928.5" y="463.5" id="s8" class="st0" width="174" height="188" v-b-modal.modal-1 @click="onClick(8)"/>
             </g>
             <g id="Salon_6">
-                <rect x="986.5" y="819.5" class="st0" width="163" height="151" v-b-modal.modal-1 @click="onClick(7)"/>
+                <rect x="986.5" y="819.5" id="s7" class="st0" width="163" height="151" v-b-modal.modal-1 @click="onClick(7)"/>
             </g>
             <g id="Salon_5">
-                <rect x="340.5" y="724.5" class="st0" width="348" height="246" v-b-modal.modal-1 @click="onClick(6)"/>
+                <rect x="340.5" y="724.5" id="s6" class="st0" width="348" height="246" v-b-modal.modal-1 @click="onClick(6)"/>
             </g>
             <g id="Salon_4">
-                <rect x="15.5" y="783.5" class="st0" width="257" height="187" v-b-modal.modal-1 @click="onClick(5)"/>
+                <rect x="15.5" y="783.5" id="s5" class="st0" width="257" height="187" v-b-modal.modal-1 @click="onClick(5)"/>
             </g>
             <g id="Salon_3">
-                <rect x="15.5" y="429.5" class="st0" width="177" height="266" v-b-modal.modal-1 @click="onClick(4)"/>
+                <rect x="15.5" y="429.5" id="s4" class="st0" width="177" height="266" v-b-modal.modal-1 @click="onClick(4)"/>
             </g>
             <g id="Salon_2">
-                <rect x="15.5" y="253.5" class="st0" width="177" height="169" v-b-modal.modal-1 @click="onClick(3)"/>
+                <rect x="15.5" y="253.5" id="s3" class="st0" width="177" height="169" v-b-modal.modal-1 @click="onClick(3)"/>
             </g>
             <g id="Salon_1">
-                <rect x="15.5" y="33.5" class="st0" width="177" height="213" v-b-modal.modal-1 @click="onClick(2)"/>
+                <rect x="15.5" y="33.5" id="s2" class="st0" width="177" height="213" v-b-modal.modal-1 @click="onClick(2)"/>
             </g>
             <g id="Cafeteria">
-                <rect x="282.5" y="284.5" class="st0" width="555" height="359" v-b-modal.modal-1  @click="onClick(1)"/>
+                <rect x="282.5" y="284.5" id="s1" class="st0" width="555" height="359" v-b-modal.modal-1  @click="onClick(1)"/>
             </g>
             <g id="Muros">
                 <rect id="Muro_00000168813808912642922490000004234379042611441849_" x="340" y="649" class="st1" width="475" height="13"/>
@@ -79,7 +79,7 @@
             </g>
         </svg>
     </div>
-    <Modal :message="room"></Modal>
+    <Modal :message="name"></Modal>
     
 </template>
 
@@ -88,22 +88,30 @@
     
     export default{
         name: 'Schoolmap',
-        
-        methods:{
-            onClick(room){  
-                //alert('Salón: ' + name)
-                console.log('Salón: ' + room)
-                this.room = room
+        data(){
+            return {
+                name: ""
             }
         },
         components:{
             Modal
         },
-        data(){
-            return {
-                room: ""
-            }
-        }
+        created(){
+        },
+        updated(){
+
+        },
+        
+        methods:{
+            onClick(name){  
+                //alert('Salón: ' + name)
+                console.log('Salón: ' + name)
+                this.name = name
+            },
+        },
+        
+        
+        
     }
 </script>
 
@@ -113,7 +121,6 @@
         height: 32em;
     }
 	.st0{
-        fill:#D9D9D9;
         stroke:#000000;
     }
 	.st1{
@@ -127,5 +134,6 @@
         fill: #b2b2b2;
         cursor: pointer;
     }
+    
 </style>
   
